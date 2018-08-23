@@ -1,0 +1,64 @@
+
+MODELS:
+
+    User
+    |=====> Student.new(:name, :grade)
+    |=====> Teacher.new(:name)
+
+    Test.new(:questions[], :points = questions.count)
+    Question.new(:question, :answer)
+
+    Relations:
+    Teacher has many students
+    Student belongs to a teacher
+
+    Teacher has many Tests
+    Student has many Tests
+    Test has many Questions
+    Question belongs to a test
+
+    Functionality:
+
+    A teacher can signup
+    A student can signup and choose from a list of teachers
+    Teacher can Login
+    Teacher can logout
+    Student can login
+    Student can logout
+
+    Teach can create a Test
+    Teacher can view a Test
+    Teacher can edit a Test
+    Teacher can delete a Test
+    Student can complete a Test if created by their teacher
+
+
+
+
+
+VIEWS:
+
+    Teachers 
+        /teachers/login
+        /teachers/logout
+        /teachers/signup
+        /teachers/:teacher_id/students (lists all the students of a given teacher)
+        /teachers/:teacher_id/students/:student_id (gives information on specified student of specified teacher)
+
+    Students
+        /students/login
+        /students/logout
+        /students/signup
+
+    Tests
+        /tests (view a list of tests along with their teachers)
+        /tests/:id (available to all teachers, available to students whose teacher authored their test)
+        /test/:id/edit (available only to author teacher of the test. Allows editing of test questions and deleting of the test)
+
+
+
+
+
+
+
+CONTROLLERS

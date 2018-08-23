@@ -1,0 +1,30 @@
+class ApplicationController < Sinatra::Base
+
+    configure do
+        set :public_folder, 'public'
+        set :views, 'app/views'
+
+        enable :sessions
+        set :session_secret, 'secret'
+    end
+
+    helpers do
+        def logged_in?
+            !!session[:email]
+        end
+
+        def login(email)
+            # impliment logic to take an instance of the User class
+            session[:email] = email
+        end
+
+        def logout!
+            session.clear
+        end
+    end
+
+    get '/' do
+        "Hello World"
+    end
+
+end
