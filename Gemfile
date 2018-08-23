@@ -14,5 +14,6 @@ gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'shotgun'
 gem 'bcrypt', '~> 3.1.7'
+gem 'tux'
 # In your classes that implement bcrypt, make sure to add the line, 'has_secure_password' to them
 # see for more details: https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
