@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_08_23_183943) do
 
   create_table "questions", force: :cascade do |t|
-    t.string "questions"
+    t.string "question"
     t.string "answer"
     t.integer "test_id"
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_183943) do
 
   create_table "tests", force: :cascade do |t|
     t.string "title"
-    t.integer "points"
+    t.integer "question_ids"
     t.integer "teacher_id"
   end
 
