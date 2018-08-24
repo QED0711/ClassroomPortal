@@ -6,6 +6,7 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.integer :teacher_id
       t.integer :test_ids
+      t.integer :grade_ids
     end
   end
 end

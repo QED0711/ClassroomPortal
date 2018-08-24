@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
     belongs_to :teacher
     has_many :tests
+    has_many :grades
 
     has_secure_password
 

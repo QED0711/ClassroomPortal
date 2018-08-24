@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_183943) do
+ActiveRecord::Schema.define(version: 2018_08_24_204502) do
+
+  create_table "grades", force: :cascade do |t|
+    t.float "score"
+    t.integer "test_id"
+    t.integer "student_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "question"
@@ -24,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_183943) do
     t.string "password_digest"
     t.integer "teacher_id"
     t.integer "test_ids"
+    t.integer "grade_ids"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -38,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_183943) do
     t.string "title"
     t.integer "question_ids"
     t.integer "teacher_id"
+    t.integer "grade_ids"
   end
 
 end

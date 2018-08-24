@@ -4,6 +4,7 @@ class CreateTests < ActiveRecord::Migration[5.2]
       t.string :title
       t.integer :question_ids
       t.integer :teacher_id
+      t.integer :grade_ids
     end 
   end
 end
