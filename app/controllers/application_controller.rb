@@ -13,6 +13,14 @@ class ApplicationController < Sinatra::Base
             !!session[:user_id]
         end
 
+        def logged_in_as_teacher?
+            logged_in? && session[:teacher]
+        end
+
+        def logged_in_as_student?
+            logged_in? && session[:student]
+        end
+
         def login_id
             session[:user_id]
         end

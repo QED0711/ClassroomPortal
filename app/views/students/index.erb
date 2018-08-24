@@ -1,0 +1,22 @@
+
+<h1>Welcome <%= @student.username %></h1>
+
+<h3>Your instructor is <%= @teacher.username %></h3>
+
+<h3>Course tests</h3>
+
+<ul>
+
+    <% @teacher.tests.each do |test| %>
+        <% test_title = Test.find_by_id(test.id).title %>
+        <% test_slug = Test.find_by_id(test.id).slug %>
+        <li>
+            <a href="/tests/<%= test_slug %>"><%= test_title %></a>
+        </li>
+    <% end %>
+
+</ul>
+
+<form action="/students/logout" method="POST">
+    <input type="submit" value="logout">
+</form>
