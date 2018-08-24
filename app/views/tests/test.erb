@@ -1,0 +1,23 @@
+
+<h3>Student: <%= @student.username %></h3>
+<h4>Test: <%= @test.title %></h4>
+
+<form action="/tests/<%= @test.slug %>/grader" method="POST">
+
+    
+    <ol>
+        <% @test.question_ids.each do |question_id| %>
+        <% question = Question.find_by_id(question_id) %>
+        
+        <li>
+            <span>
+                <%= question.question %>
+                <input type="text" name="answer[]" value="">
+            </span>
+        </li>
+        
+        <% end %>
+    </ol>
+
+    <input type="submit" value="Submit Test">
+</form>
