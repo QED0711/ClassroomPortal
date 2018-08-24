@@ -19,14 +19,16 @@ ActiveRecord::Schema.define(version: 2018_08_23_183943) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.string "email"
     t.string "password_digest"
     t.integer "teacher_id"
     t.integer "test_ids"
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.string "email"
     t.string "password_digest"
     t.integer "student_ids"
     t.integer "test_ids"

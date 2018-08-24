@@ -1,0 +1,31 @@
+
+
+<h1>Welcome <%= @teacher.username %></h1>
+
+<h3>Your Students:</h3>
+
+<ul>
+    <% @teacher.students.each do |student| %>
+    
+        <li>
+            <a href="teachers/students/<%= student.username %>"><%= student.username %></a>
+        </li>
+    
+    <% end %>
+</ul>
+
+<h3>Your Tests:</h3>
+
+<ul>
+    <% @teacher.tests.each do |test| %>
+
+        <li>
+            <a href="/tests/<%= test.title %>"><%= test.title %></a>
+        </li>
+
+    <% end %>
+</ul>
+
+<form action="/teachers/logout" method="POST">
+    <input type="submit" value="Logout">
+</form>

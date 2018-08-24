@@ -17,19 +17,19 @@ end
 
 # Insert new data
 
-t1 = Teacher.create(name: "Quinn", password: "123")
-t2 = Teacher.create(name: "Betsy", password: "123")
-t3 = Teacher.create(name: "Sho", password: "123")
+t1 = Teacher.create(username: "Quinn", email: "Quinn@email.com", password: "123")
+t2 = Teacher.create(username: "Betsy", email: "Betsy@email.com", password: "123")
+t3 = Teacher.create(username: "Sho", email: "Sho@email.com", password: "123")
 
-s1 = Student.create(name: "Tim", password: "123")
-s2 = Student.create(name: "Tom", password: "123")
-s3 = Student.create(name: "Tang", password: "123")
-s4 = Student.create(name: "Bill", password: "123")
-s5 = Student.create(name: "Bob", password: "123")
-s6 = Student.create(name: "Bush", password: "123")
-s7 = Student.create(name: "Nancy", password: "123")
-s8 = Student.create(name: "Mancy", password: "123")
-s9 = Student.create(name: "Jancy", password: "123")
+s1 = Student.create(username: "Tim", email: "Tim@email.com", password: "123")
+s2 = Student.create(username: "Tom", email: "Tom@email.com", password: "123")
+s3 = Student.create(username: "Tang", email: "Tang@email.com", password: "123")
+s4 = Student.create(username: "Bill", email: "Bill@email.com", password: "123")
+s5 = Student.create(username: "Bob", email: "Bob@email.com", password: "123")
+s6 = Student.create(username: "Bush", email: "Bush@email.com", password: "123")
+s7 = Student.create(username: "Nancy", email: "Nancy@email.com", password: "123")
+s8 = Student.create(username: "Mancy", email: "Mancy@email.com", password: "123")
+s9 = Student.create(username: "Jancy", email: "Jancy@email.com", password: "123")
 
 tst1 = Test.create(title: "Notes")
 tst2 = Test.create(title: "Clefs")

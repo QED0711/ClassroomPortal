@@ -10,7 +10,11 @@ class ApplicationController < Sinatra::Base
 
     helpers do
         def logged_in?
-            !!session[:email]
+            !!session[:user_id]
+        end
+
+        def login_id
+            session[:user_id]
         end
 
         def login(email)
@@ -24,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        "Hello World"
+        erb :index
     end
 
 end

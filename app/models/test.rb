@@ -6,4 +6,12 @@ class Test < ActiveRecord::Base
     def points
         self.points = self.questions.count
     end
+
+    def slug
+        self.title.gsub(" ", "-")
+    end
+
+    def self.find_by_slug(slug)
+        Test.find_by(title: slug.gsub("-", " "))
+    end
 end
