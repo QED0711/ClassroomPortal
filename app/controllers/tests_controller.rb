@@ -62,8 +62,9 @@ class TestsController < ApplicationController
                 correct += 1
             end
         end
-        grade = (correct.to_f/@questions.count.to_f)*100.0
-        "Grade #{grade}%"
+        score = (correct.to_f/@questions.count.to_f)*100.0
+        @grade = Grade.create(score: score, test_id: @test.id, student_id: session[:user_id])
+        redirect "/grades/#{Student.find(session[:user_id]).slug}"
     end
 
 end

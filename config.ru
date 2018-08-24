@@ -10,5 +10,6 @@ use Rack::MethodOverride
 use TeachersController
 use StudentsController
 use TestsController
+use GradesController
 
 run ApplicationController

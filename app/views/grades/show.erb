@@ -1,0 +1,16 @@
+
+<h1>Student: <%= @student.username %></h1>
+
+<ul>
+    <% if @student.grades.count == 0 %>
+        <p>You don't have any grades on record</p>
+    <% else %>
+        <% @student.grades.each do |grade| %>
+            <% test = Test.find_by_id(grade.test_id) %>
+            <li>
+                <%= test.title %> : <%= grade.score %>%
+            </li>
+
+        <% end %>
+    <% end %>
+</ul>
