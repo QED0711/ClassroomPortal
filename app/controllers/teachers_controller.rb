@@ -9,6 +9,21 @@ class TeachersController < ApplicationController
         end
     end
 
+    get '/teachers/signup' do
+        erb :'teachers/signup'
+    end
+
+    post '/teachers/signup' do
+        @teacher = Teacher.create(params)
+        if !!@teacher
+            session[:user_id] = @teacher.id
+            session[:teacher] = true
+            redirect '/teachers'
+        else
+            redirect '/teachers/login'
+        end
+    end
+
     get '/teachers/login' do
         erb :'teachers/login'
     end
@@ -32,11 +47,6 @@ class TeachersController < ApplicationController
         else
             redirect '/teachers'
         end
-    end
-    
-    post '/teachers/logout' do
-        logout!
-        redirect '/teachers/login'
     end
 
     get '/teachers/students/:slug' do

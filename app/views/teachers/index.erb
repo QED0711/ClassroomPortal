@@ -14,7 +14,7 @@
     <% end %>
 </ul>
 
-<h3>Your Tests:</h3>
+<h3>Your Tests (click to edit):</h3>
 
 <ul>
     <% @teacher.tests.each do |test| %>
@@ -26,6 +26,15 @@
     <% end %>
 </ul>
 
-<form action="/teachers/logout" method="POST">
-    <input type="submit" value="Logout">
+
+<form action="/tests/new" method="GET">
+
+    <input type="submit" value="Create a new test">
+
+</form>
+<hr>
+<form action="/grades/teachers/<%= @teacher.slug %>" method="GET">
+
+    <input type="submit" value="Student Grades">
+
 </form>

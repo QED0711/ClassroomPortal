@@ -1,7 +1,25 @@
 class TestsController < ApplicationController 
 
     get '/tests' do
-        "Test View"
+    # list all tests (as links) by teacher. teachers and students can access
+    end
+
+    get '/tests/new' do
+        if logged_in_as_teacher? 
+            @teacher = Teacher.find_by_id(session[:user_id])
+            erb :'tests/new'
+        else
+            redirect '/'
+        end
+    end
+
+    post '/tests/new' do
+        if params[:title] != ""
+            @test = Test.create(title: params[:title], teacher_id: session[:user_id])
+            redirect "/tests/#{@test.slug}/edit"
+        else
+            redirect '/tests/new'
+        end
     end
 
     get '/tests/:slug' do
@@ -41,8 +59,10 @@ class TestsController < ApplicationController
 
     patch '/tests/:slug/edit' do
         @test = Test.find_by_slug(params[:slug])
-        
-        # First, update each question of the test with the revised questions/answers (do even if not changed). 
+        #update test title
+        @test.title = params[:title]
+        @test.save
+        # update each question of the test with the revised questions/answers (do even if not changed). 
         # delete a question if it has a blanck question or answer field
         @test.questions.each_with_index do |q, i| 
             if params[:questions][i] == "" || params[:answers][i] == ""
@@ -63,8 +83,11 @@ class TestsController < ApplicationController
         redirect "/tests/#{@test.slug}"
     end
 
-    delete '/tests/delete' do
-
+    delete '/tests/:slug/delete' do
+        @test = Test.find_by_slug(params[:slug])
+        @test.grades.each {|grade| grade.delete}
+        @test.delete
+        redirect '/teachers'
     end
 
     get '/tests/:slug/take-test' do

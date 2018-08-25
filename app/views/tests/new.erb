@@ -1,0 +1,15 @@
+
+<h1>Teacher: <%= @teacher.username %></h1>
+
+<h3>Create a new test</h3>
+
+<form action="/tests/new" method="POST">
+    <label for="title">
+        Title:
+        <input type="text" name="title" id="title" value="">
+    </label>
+    <p>(you will add questions on the next page)</p>
+
+    <input type="submit" value="Create Test">
+
+</form>

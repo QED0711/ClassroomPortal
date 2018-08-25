@@ -4,22 +4,24 @@
 <ul>
     
     <% @teacher.students.each do |student| %>
-    
+        
         <ul>
             <li><%= student.username %></li>
-            <ul>
+            <% if student.grades.count > 0 %>
+                <ul>
 
                     <% student.grades.each do |grade| %>
                         <li><%= grade.test.title %>: <%= grade.score %>%</li>
                     <% end %>
 
-            </ul>
+                </ul>
+            <% else %>
+                <ul>
+                    <li>This student does not have any graded tests</li>
+                </ul>
+            <% end %>
         </ul>
     
     <% end %>
-
-    <form action="/teachers/<%= @teacher.username %>" method="GET">
-        <input type="submit" value="Return To Profile Page">
-    </form>
 
 </ul>

@@ -45,4 +45,17 @@ class ApplicationController < Sinatra::Base
         end
     end
 
+    post '/logout' do
+        logout!
+        redirect '/welcome'
+    end
+
+    get '/welcome' do
+        erb :index
+    end
+
+    get '/signup' do
+        erb :signup
+    end
+
 end

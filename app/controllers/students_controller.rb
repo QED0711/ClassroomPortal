@@ -7,7 +7,22 @@ class StudentsController < ApplicationController
             redirect '/students/login'
         end
     end
+
+    get '/students/signup' do
+        erb :'students/signup'
+    end
     
+    post '/students/signup' do
+        @student = Student.create(params)
+        if @student
+            session[:user_id] = @student.id
+            session[:student] = true
+            redirect "/students/#{@student.slug}"
+        else
+            redirect '/students/signup'
+        end
+    end
+
     get '/students/login' do
         if logged_in_as_student?
             redirect "/students/#{Student.find_by_id(session[:user_id]).slug}"
@@ -25,11 +40,6 @@ class StudentsController < ApplicationController
         else
             redirect '/students/login'
         end
-    end
-
-    post '/students/logout' do
-        logout!
-        redirect '/students/login'
     end
 
     get '/students/:slug' do

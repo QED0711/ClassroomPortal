@@ -17,6 +17,8 @@
 
 </ul>
 
-<form action="/students/logout" method="POST">
-    <input type="submit" value="logout">
+<form action="/grades/<%= @student.slug %>" method="GET">
+
+    <input type="submit" value="Your Grades">
+
 </form>

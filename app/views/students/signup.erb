@@ -1,0 +1,35 @@
+<h1>Student Signup</h1>
+
+<form action="/students/signup" method="POST">
+
+    <label for="username">
+        Username:
+        <input type="text" id="username" name="username">
+    </label>
+
+    <br>
+    
+    <label for="email">
+        Email:
+        <input type="email" id="email" name="email">
+    </label>
+    
+    <br>
+    
+    <label for="password">
+        Password:
+        <input type="password" id="password" name="password">
+    </label>
+    
+
+    <h3>Select a teacher:</h3>
+
+    <% Teacher.all.each do |teacher| %>
+
+        <input type="radio" name="teacher_id" value="<%= teacher.id %>"><%= teacher.username %></input>
+        <br>
+    <% end %>   
+
+    <input type="submit" value="Singup">
+
+</form>
