@@ -16,6 +16,12 @@
                 <input type="submit" value="Logout">
             </form>
     <% end %>
+
+    <% if session[:error] %>
+        <h6 style="color: red;"><%= session[:error] %></h6>
+        <% session[:error] = nil %>
+    <% end %>
+
     <%= yield %>
 
 

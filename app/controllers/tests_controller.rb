@@ -1,3 +1,5 @@
+require "sinatra/flash"
+
 class TestsController < ApplicationController 
 
     get '/tests' do
@@ -50,9 +52,11 @@ class TestsController < ApplicationController
                 @teacher = Teacher.find_by_id(session[:user_id])
                 erb :'tests/edit'
             else
+                session[:error] = "This test does not belong to you"
                 redirect '/teacher'
             end
         else
+            session[:error] = "Only teachers may edit tests"
             redirect '/'
         end
     end

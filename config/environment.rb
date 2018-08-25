@@ -1,4 +1,5 @@
 require "bundler"
+require "sinatra/flash"
 
 Bundler.require
 
