@@ -39,5 +39,15 @@ class TeachersController < ApplicationController
         redirect '/teachers/login'
     end
 
+    get '/teachers/students/:slug' do
+        @student = Student.find_by_slug(params[:slug])
+        @teacher = Teacher.find_by_id(@student.teacher_id)
+        if logged_in_as_teacher? && @teacher.id == session[:user_id]
+            erb :'teachers/show'
+        else
+            redirect '/'
+        end
+    end
+
 
 end

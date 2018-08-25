@@ -1,0 +1,23 @@
+
+<h1>Teacher: <%= @teacher.username %></h1>
+<h3>Student: <%= @student.username %></h3>
+
+<h3>Grades</h3>
+<% if @student.grades.count == 0 %>
+    <p>This student does not have any graded tests</p>
+<% else %>
+    <ul>
+        <% @student.grades.each do |grade| %>
+
+            <li>
+                <%= grade.test.title %>: <%= grade.score %>%
+            </li>
+
+        <% end %>
+    </ul>
+
+<% end %>
+<form action="/teachers" method="GET">
+    <input type="submit" value="Return To Profile Page">
+</form>
+

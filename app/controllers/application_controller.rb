@@ -36,7 +36,13 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        erb :index
+        if logged_in_as_teacher?
+            redirect '/teachers'
+        elsif logged_in_as_student?
+            redirect '/students'
+        else
+            erb :index
+        end
     end
 
 end

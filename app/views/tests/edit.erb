@@ -1,0 +1,42 @@
+<h1>Teacher: <%= @teacher.username %></h1>
+<h3>Test Title: <%= @test.title %></h3>
+
+<h4>Questions:</h4>
+
+<form action="/tests/<%= @test.slug %>/edit" method="post">
+    <input type="hidden" name="_method" value="patch">
+    
+    <% @test.questions.each do |question| %>
+    
+        <li>
+            Question: <input type="text" value="<%= question.question %>" name="questions[]">
+
+            <ul>
+                <li>Answer: <input type="text" value="<%= question.answer %>" name="answers[]"></li>
+            </ul>
+
+        </li>
+    
+    <% end %>
+    <hr>
+    <h4>Create a new question for this test</h4>
+    <label for="new_question">Question:
+        <input type="text" id="new_question" name="new_question">
+    </label>   
+
+    <br>
+
+    <label for="new_answer">Answer:
+        <input type="text" id="new_answer" name="new_answer">
+    </label>   
+    <hr>
+
+    
+
+    <input type="submit" value="Submit Edits">
+</form>
+
+<form action="/tests/delete" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Test">
+</form>
