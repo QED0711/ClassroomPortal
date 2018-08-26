@@ -30,7 +30,10 @@ class TeachersController < ApplicationController
     end
 
     post '/teachers/login' do
-        @teacher = Teacher.find_by(username: params[:username]).authenticate(params[:password])
+        teacher = Teacher.find_by(username: params[:username])
+        if !!teacher
+            @teacher = teacher.authenticate(params[:password])
+        end
         if !!@teacher
             session[:user_id] = @teacher.id
             session[:teacher] = true

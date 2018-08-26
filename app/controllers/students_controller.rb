@@ -33,7 +33,10 @@ class StudentsController < ApplicationController
     end
 
     post '/students/login' do
-        @student = Student.find_by(username: params[:username]).authenticate(params[:password])
+        student = Student.find_by(username: params[:username])
+        if !!student
+            @student = student.authenticate(params[:password])
+        end
         if @student
             session[:user_id] = @student.id
             session[:student] = true
