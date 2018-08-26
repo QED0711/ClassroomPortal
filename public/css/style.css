@@ -1,6 +1,6 @@
 
 body {
-    background-color: rgb(97, 97, 97);
+    background-color: rgb(80, 115, 155);
 }
 
 .app {
@@ -18,7 +18,7 @@ body {
     background-color: whitesmoke;
     box-shadow: 5px 5px 10px rgb(61, 61, 61); 
 
-    border: 2px solid grey;
+    border: 2px solid rgb(83, 83, 83);
     border-radius: 10px;
 
     display: grid;
@@ -41,8 +41,27 @@ body {
     padding: 5px;
 }
 
-.nav-btn input:hover {
+
+input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(54, 181, 255);
+    border-radius: 8px;
+    padding: 5px;
+}
+
+input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+.content {
+    background-color: whitesmoke;
+    padding:0 10px 10px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(61, 61, 61); 
+}
+
+input {
+    margin: 5px;
 }
 
 

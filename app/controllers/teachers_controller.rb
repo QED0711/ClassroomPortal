@@ -21,7 +21,7 @@ class TeachersController < ApplicationController
             redirect '/teachers'
         else
             session[:error] = "Please enter valid credientials"
-            redirect '/teachers/login'
+            redirect '/teachers/signup'
         end
     end
 
