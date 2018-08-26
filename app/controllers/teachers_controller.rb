@@ -20,6 +20,7 @@ class TeachersController < ApplicationController
             session[:teacher] = true
             redirect '/teachers'
         else
+            session[:error] = "Please enter valid credientials"
             redirect '/teachers/login'
         end
     end
@@ -35,6 +36,7 @@ class TeachersController < ApplicationController
             session[:teacher] = true
             redirect '/teachers'
         else
+            session[:error] = "Incorrect username or password"
             redirect '/teachers/login'
         end
     end
@@ -45,7 +47,8 @@ class TeachersController < ApplicationController
         if logged_in_as_teacher? && login_id == @teacher.id
             erb :'teachers/index'
         else
-            redirect '/teachers'
+            session[:error] = "You must be logged in as a teacher to view a teacher profile page"
+            redirect '/'
         end
     end
 
@@ -55,6 +58,7 @@ class TeachersController < ApplicationController
         if logged_in_as_teacher? && @teacher.id == session[:user_id]
             erb :'teachers/show'
         else
+            session[:error] = "Access denied: access rights not verified"
             redirect '/'
         end
     end

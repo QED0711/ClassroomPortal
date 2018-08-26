@@ -19,6 +19,7 @@ class StudentsController < ApplicationController
             session[:student] = true
             redirect "/students/#{@student.slug}"
         else
+            session[:error] = "Please enter valid credentials"
             redirect '/students/signup'
         end
     end
@@ -38,6 +39,7 @@ class StudentsController < ApplicationController
             session[:student] = true
             redirect "/students/#{@student.slug}"
         else
+            session[:error] = "Incorrect username or password"
             redirect '/students/login'
         end
     end
@@ -49,6 +51,7 @@ class StudentsController < ApplicationController
             @teacher = Teacher.find_by_id(@student.teacher_id)
             erb :'students/index'
         else
+            session[:error] = "You must login before viewing a profile page"
             redirect '/students/login'
         end
     end

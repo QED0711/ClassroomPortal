@@ -11,6 +11,7 @@ class TestsController < ApplicationController
             @teacher = Teacher.find_by_id(session[:user_id])
             erb :'tests/new'
         else
+            session[:error] = "Only teachers may create new tests"
             redirect '/'
         end
     end
@@ -20,6 +21,7 @@ class TestsController < ApplicationController
             @test = Test.create(title: params[:title], teacher_id: session[:user_id])
             redirect "/tests/#{@test.slug}/edit"
         else
+            session[:error] = "Failed to create new test. Please verify your test title"
             redirect '/tests/new'
         end
     end
@@ -40,7 +42,7 @@ class TestsController < ApplicationController
                 redirect "/tests/#{@test.slug}/take-test"
             end
         end
-
+        session[:error] = "Only teachers who authored the test may view ttest content"
         redirect '/'
 
     end
@@ -102,6 +104,7 @@ class TestsController < ApplicationController
         elsif logged_in_as_teacher?
             redirect "/tests/#{params[:slug]}"
         else
+            session[:error] = "Please login before viewing a test"
             redirect '/'
         end
     end

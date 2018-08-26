@@ -18,6 +18,7 @@ class GradesController < ApplicationController
             @teacher = Teacher.find_by_slug(params[:slug])
             erb :'grades/show-all'
         else
+            session[:error] = "Access Denied (Teacher Access Only)"
             redirect '/'
         end
     end

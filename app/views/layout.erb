@@ -17,8 +17,8 @@
             </form>
     <% end %>
 
-    <% if session[:error] %>
-        <h6 style="color: red;"><%= session[:error] %></h6>
+    <% if session[:error] != nil %>
+        <h3 class="error-msg"><%= session[:error] %></h3>
         <% session[:error] = nil %>
     <% end %>
 
