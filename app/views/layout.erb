@@ -4,27 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Portal</title>
 </head>
 <body>
-    <% if logged_in? %>
-            <form action="/" method="GET">
+    <div class="app">
+
+        <% if logged_in_as_teacher? %>
+        <div class="banner">
+            <div class="banner-info">
+                <h5>Logged in as <%= Teacher.find_by_id(session[:user_id]).username %></h5>
+                <h6>Access Rights: Teacher</h6>
+            </div>
+            
+            <form class="profile-btn nav-btn" action="/" method="GET">
                 <input type="submit" value="Your Profile">
             </form>
-            <form action="/logout" method="POST">
+            <form class="logout-btn nav-btn" action="/logout" method="POST">
                 <input type="submit" value="Logout">
+            </form>            
+            
+        </div>
+        <% end %>
+        
+        <% if logged_in_as_student? %>
+        <div class="banner">
+            <div class="banner-info">
+                <h5>Logged in as <%= Student.find_by_id(session[:user_id]).username %></h5>
+                <h6>Access Rights: Student</h6>
+            </div>
+            
+            <form class="profile-btn nav-btn" action="/" method="GET">
+                <input type="submit" value="Your Profile">
             </form>
-    <% end %>
-
-    <% if session[:error] != nil %>
+            <form class="logout-btn nav-btn" action="/logout" method="POST">
+                <input type="submit" value="Logout">
+            </form>            
+            
+        </div>
+        <% end %>
+        
+        
+        
+        <% if session[:error] != nil %>
         <h3 class="error-msg"><%= session[:error] %></h3>
         <% session[:error] = nil %>
-    <% end %>
-
-    <%= yield %>
-
-
-
-</body>
-</html>
+        <% end %>
+        
+        <div class="content">
+            <%= yield %>
+        </div>
+        
+        
+    </div>
+        
+    </body>
+    </html>

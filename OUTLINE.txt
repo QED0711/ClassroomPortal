@@ -55,6 +55,8 @@ VIEWS:
         /tests/:id (available to all teachers, available to students whose teacher authored their test)
         /test/:id/edit (available only to author teacher of the test. Allows editing of test questions and deleting of the test)
 
+        post /tests/:id/grade (takes student answers from test with :id, checks against Test.questions[answers])
+
 
 
 
