@@ -10,6 +10,13 @@
 <body>
     <div class="app">
 
+        <% if session[:error] != nil %>
+            <div class="err-msg">
+                <h3><%= session[:error] %></h3>
+            </div>
+            <% session[:error] = nil %>
+        <% end %>
+        
         <% if logged_in_as_teacher? %>
         <div class="banner">
             <div class="banner-info">
@@ -44,12 +51,6 @@
         </div>
         <% end %>
         
-        
-        
-        <% if session[:error] != nil %>
-        <h3 class="error-msg"><%= session[:error] %></h3>
-        <% session[:error] = nil %>
-        <% end %>
         
         <div class="content">
             
