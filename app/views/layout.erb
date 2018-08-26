@@ -12,7 +12,7 @@
 
         <% if session[:error] != nil %>
             <div class="err-msg">
-                <h3><%= session[:error] %></h3>
+                <h5><%= session[:error] %></h5>
             </div>
             <% session[:error] = nil %>
         <% end %>
@@ -63,5 +63,12 @@
         
     </div>
         
+    <script>
+        let error = document.getElementsByClassName("err-msg")[0];
+        error.onclick = () => {
+            error.style.display = "none";
+        } 
+    </script>
+
     </body>
     </html>
